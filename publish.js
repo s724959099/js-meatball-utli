@@ -15,7 +15,7 @@ setTimeout(() => {
   add_version(obj)
   fs.writeFileSync("package.json", JSON.stringify(obj, null, '\t'))
   cmd.get("npm publish", (err, data) => {
-    console.log("finish")
+    console.log("finish version:",obj.version)
     process.exit()
   })
 

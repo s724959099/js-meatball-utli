@@ -1,4 +1,4 @@
-import "src/array_lib"
+import "test/array_lib"
 
 let VueAttrs = {
   watch_data: [],
@@ -222,7 +222,7 @@ let utli_module = {
 }
 
 
-exports.utli_install = () => {
+exports.install_utli = () => {
   for (let key of Object.keys(utli_module)) {
     window[key] = utli_module[key]
   }
