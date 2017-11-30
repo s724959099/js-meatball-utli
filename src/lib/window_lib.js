@@ -1,4 +1,4 @@
-import "test/array_lib"
+import "./array_lib"
 
 let VueAttrs = {
   watch_data: [],

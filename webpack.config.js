@@ -1,77 +1,51 @@
-const path = require('path');
-const webpack = require('webpack');
-const htmlPlugin = require('html-webpack-plugin');
-const openBrowserPlugin = require('open-browser-webpack-plugin');
-const dashboardPlugin = require('webpack-dashboard/plugin');
-const autoprefixer = require('autoprefixer');
 
-const PATHS = {
-  app: path.join(__dirname, 'src'),
-  images: path.join(__dirname, 'src/assets/'),
-  build: path.join(__dirname, 'dist')
-};
+var path = require('path');
+var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const options = {
-  host: 'localhost',
-  port: '1234'
-};
+require('es6-promise').polyfill();
 
 module.exports = {
-  entry: {
-    app: PATHS.app
-  },
+  entry: './src/main.js',
+
   output: {
-    path: PATHS.build,
-    filename: 'index.js',
-    library: 'library',
-    libraryTarget: 'umd'
+    path: __dirname,
+    filename: 'dist/app.js'
   },
-  devServer: {
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    stats: 'errors-only',
-    host: options.host,
-    port: options.port
-  },
+
+  plugins: [
+    // // Specify the resulting CSS filename
+    new ExtractTextPlugin('dist/app.css'),
+  ],
+
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
+        exclude: /node_modules/,
+        use: [
+          'babel-loader'
+        ]
       },
       {
-        test: /\.css$/,
-        loaders: ['style', 'css', 'postcss'],
-        include: PATHS.app
-      },
-
-      {
-        test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-        loader: 'file',
-        query: {
-          name: '[path][name].[ext]'
-        }
-      },
+        test: /\.sass/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ]
+        })
+      }
     ]
   },
-  postcss: function () {
-    return [
-      autoprefixer({
-        browsers: [
-          '>1%',
-          'last 4 versions',
-          'Firefox ESR',
-          'not ie < 9',
-        ]
-      }),
-    ];
+
+  stats: {
+    // Colored output
+    colors: true
   },
-  plugins: [
-    new dashboardPlugin(),
-    new webpack.HotModuleReplacementPlugin({
-      multiStep: true
-    }),
-  ]
+
+  // Create Sourcemaps for the bundle
+  devtool: 'source-map'
 };
