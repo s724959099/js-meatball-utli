@@ -212,6 +212,12 @@ function uuid() {
     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
   })
 }
+
+let range = (num, start = 0) => {
+  return Array.from(new Array(num).keys()).map((val) => {
+    return val + start
+  })
+}
 let utli_module = {
   Eventhelper,
   EZComponent,
@@ -219,10 +225,11 @@ let utli_module = {
   uuid,
   bytes_to_size,
   get_url,
+  range,
 }
 
 
-exports.install_utli = () => {
+export function install_utli(){
   for (let key of Object.keys(utli_module)) {
     window[key] = utli_module[key]
   }

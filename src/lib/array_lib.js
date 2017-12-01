@@ -90,11 +90,6 @@ Array.init_data = function (num, value) {
 }
 
 
-window.range = (num, start = 0) => {
-  return Array.from(new Array(num).keys()).map((val) => {
-    return val + start
-  })
-}
 
 
 

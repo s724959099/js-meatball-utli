@@ -98,9 +98,8 @@ let py_module = {
   eval_get,
 }
 
-exports.install_py = () => {
+export function install_py() {
   for (let key of Object.keys(py_module)) {
     window[key] = py_module[key]
   }
-  console.log("install py")
 }

@@ -10,7 +10,9 @@ module.exports = {
 
   output: {
     path: __dirname,
-    filename: 'dist/app.js'
+    filename: 'dist/app.js',
+    library: 'meatball',
+    libraryTarget: 'commonjs2'
   },
 
   plugins: [
@@ -24,8 +26,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader'
-        ]
+          // 'babel-loader'
+        ],
+
       },
       {
         test: /\.sass/,

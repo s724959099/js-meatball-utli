@@ -4,10 +4,7 @@
 
 import {install_py} from "./lib/py"
 import {install_utli} from "./lib/window_lib"
-
-
-
-module.exports = {
+export default {
   install_py,
   install_utli,
 }

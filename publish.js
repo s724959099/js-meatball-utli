@@ -1,6 +1,6 @@
 let fs = require('fs')
 let cmd = require("node-cmd")
-cmd.run('npm run build')
+cmd.run('npm run start')
 
 
 let add_version = (obj) => {
@@ -19,6 +19,6 @@ setTimeout(() => {
     process.exit()
   })
 
-}, 2000)
+}, 1000)
 
 
