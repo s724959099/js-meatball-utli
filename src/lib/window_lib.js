@@ -1,4 +1,5 @@
 import "./array_lib"
+import moment from "moment"
 
 let VueAttrs = {
   watch_data: [],
@@ -226,6 +227,7 @@ let utli_module = {
   bytes_to_size,
   get_url,
   range,
+  moment,
 }
 
 
