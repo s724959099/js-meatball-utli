@@ -2,6 +2,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 require('es6-promise').polyfill();
 
@@ -10,18 +11,24 @@ module.exports = {
 
   output: {
     path: __dirname,
-    filename: 'dist/app.js',
+    filename: 'dist/index.js',
     library: 'meatball',
     libraryTarget: 'commonjs2'
   },
 
   plugins: [
     // // Specify the resulting CSS filename
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     properties: true,
+    //   }
+    // }),
+    new UglifyJSPlugin(),
     new ExtractTextPlugin('dist/app.css'),
-    new webpack.ProvidePlugin({
-      moment: 'moment',
-      'window.moment': 'moment'
-    }),
+    // new webpack.ProvidePlugin({
+    //   moment: 'moment',
+    //   'window.moment': 'moment'
+    // }),
   ],
 
   module: {
@@ -29,9 +36,9 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          // 'babel-loader'
-        ],
+        // use: [
+        //   'babel-loader'
+        // ],
 
       },
       {
@@ -54,5 +61,5 @@ module.exports = {
   },
 
   // Create Sourcemaps for the bundle
-  devtool: 'source-map'
+  // devtool: 'source-map'
 };

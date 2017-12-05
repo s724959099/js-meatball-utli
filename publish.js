@@ -8,17 +8,15 @@ let add_version = (obj) => {
   version[2] = parseInt(version[2]) + 1
   version = version.join(".")
   obj.version = version
+  console.log("finish version:",obj.version)
 }
 
 setTimeout(() => {
   let obj = JSON.parse(fs.readFileSync('package.json', 'utf8'))
   add_version(obj)
   fs.writeFileSync("package.json", JSON.stringify(obj, null, '\t'))
-  cmd.get("npm publish", (err, data) => {
-    console.log("finish version:",obj.version)
-    process.exit()
-  })
+  process.exit()
 
-}, 1000)
+}, 3000)
 
 
