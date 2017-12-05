@@ -1,5 +1,4 @@
 import "./array_lib"
-import moment from "moment"
 
 let VueAttrs = {
   watch_data: [],
@@ -227,7 +226,14 @@ let utli_module = {
   bytes_to_size,
   get_url,
   range,
-  moment,
+}
+
+console.todo = function(msg) {
+  console.log(`%c${msg}`, `color: yellow; background-color: black`)
+}
+
+console.important = function(msg) {
+  console.log(`%c${msg}`,"color: red; font-weight: bold; text-decoration: underline;")
 }
 
 

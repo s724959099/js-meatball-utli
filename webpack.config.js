@@ -18,6 +18,10 @@ module.exports = {
   plugins: [
     // // Specify the resulting CSS filename
     new ExtractTextPlugin('dist/app.css'),
+    new webpack.ProvidePlugin({
+      moment: 'moment',
+      'window.moment': 'moment'
+    }),
   ],
 
   module: {

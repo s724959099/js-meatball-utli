@@ -1,12 +1,13 @@
 {
 	"name": "js-meatball-utli",
-	"version": "0.0.31",
+	"version": "0.0.41",
 	"description": "",
 	"main": "dist/app.js",
 	"scripts": {
 		"start": "webpack --config webpack.config.js",
 		"prebuild": "rimraf dist",
-		"build": "webpack --config webpack.config.js -p"
+		"build": "webpack --config webpack.config.js -p",
+		"publish": "node publish.js"
 	},
 	"keywords": [
 		"babel",
