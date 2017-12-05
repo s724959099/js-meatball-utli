@@ -1,5 +1,6 @@
 /* global __dirname, require, module*/
 
+require("babel-polyfill")
 const webpack = require('webpack')
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
 const path = require('path')
@@ -10,14 +11,14 @@ let libraryName = 'library'
 let plugins = [], outputFile
 
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }))
+  plugins.push(new UglifyJsPlugin({minimize: true}))
   outputFile = libraryName + '.min.js'
 } else {
   outputFile = libraryName + '.js'
 }
 
 const config = {
-  entry: __dirname + '/src/index.js',
+  entry: ["babel-polyfill", __dirname + '/src/index.js'],
   devtool: 'source-map',
   output: {
     path: __dirname + '/lib',
