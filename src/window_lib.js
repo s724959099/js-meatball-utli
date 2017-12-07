@@ -218,6 +218,15 @@ let range = (num, start = 0) => {
     return val + start
   })
 }
+let date_to_str = (date) => {
+  let m = date.getMonth() + 1
+  let d = date.getDate()
+  m < 10 ? m = `0${m}` : true
+  d < 10 ? d = `0${d}` : true
+  return `${date.getFullYear()}-${m}-${d}`
+}
+
+
 let utli_module = {
   Eventhelper,
   EZComponent,
@@ -226,6 +235,7 @@ let utli_module = {
   bytes_to_size,
   get_url,
   range,
+  date_to_str,
 }
 
 console.todo = function(msg) {

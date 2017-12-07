@@ -74,6 +74,14 @@ Array.prototype.in_obj_with_key = function (key, val) {
   return data
 }
 
+Array.prototype.get_obj = function (key, val, single = false) {
+  let f = this.filter((item) => item[key] === val)
+  if (single && f.length > 1) {
+    throw "more than one"
+  }
+  return f.length ? f[0] : null
+}
+
 
 
 
