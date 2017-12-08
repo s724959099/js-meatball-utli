@@ -89,6 +89,10 @@ function print(...val) {
   console.log(...val)
 }
 
+function print_json(val){
+  console.log(JSON.stringify(val,null,'\t'))
+}
+
 let py_module = {
   print,
   zip,
@@ -96,6 +100,7 @@ let py_module = {
   dict,
   dict_get,
   eval_get,
+  print_json,
 }
 
 export function install_py() {

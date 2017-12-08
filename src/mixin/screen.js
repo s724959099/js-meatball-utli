@@ -1,7 +1,7 @@
 export default {
   data () {
     return {
-      window__width:null,
+      window__width:window.innerWidth,
     }
   },
   computed:{
@@ -25,7 +25,6 @@ export default {
   methods: {
   },
   mounted(){
-    this.window__width = window.innerWidth
     $(window).on("resize",()=>{
       this.window__width = window.innerWidth
     })
