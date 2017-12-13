@@ -1,6 +1,5 @@
 let fs = require('fs')
 let cmd = require("node-cmd")
-cmd.run('npm run start')
 
 
 let add_version = (obj) => {

@@ -82,6 +82,26 @@ Array.prototype.get_obj = function (key, val, single = false) {
   return f.length ? f[0] : null
 }
 
+/**
+ * example:
+ * let a=[{a:3},{a:3},{a:3},{a:3}]
+ * a.all_exist('a') // true
+ * a.all_exist('a',3) // true
+ * a.all_exist('a',4) // false
+ *
+ * let a=[{a:3},{a:3},{a:3},{a:4}]
+ * a.all_exist('a',3) // false
+ * */
+Array.prototype.all_exist = function(key, val = undefined){
+  let result = true
+  this.map(item => {
+    if (!(key in item) || (val !== undefined && item[key] !== val)) {
+      result = false
+    }
+  })
+  return result
+
+}
 
 
 
