@@ -247,8 +247,8 @@ console.important = function(msg) {
 }
 
 
-export function install_utli(){
+export function install_utli(module){
   for (let key of Object.keys(utli_module)) {
-    window[key] = utli_module[key]
+    module[key] = utli_module[key]
   }
 }

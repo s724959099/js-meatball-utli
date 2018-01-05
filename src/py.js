@@ -103,8 +103,8 @@ let py_module = {
   print_json,
 }
 
-export function install_py() {
+export function install_py(module) {
   for (let key of Object.keys(py_module)) {
-    window[key] = py_module[key]
+    module[key] = py_module[key]
   }
 }
