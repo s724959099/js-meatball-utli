@@ -41,20 +41,19 @@ Array.prototype.change = function (old_val, new_val) {
 }
 
 Array.prototype.change_obj_with_key = function (key, val,new_obj) {
-  return this.map((obj) => {
-    if(obj[key]===val){
-      return new_obj
-    }else{
-      return obj
-    }
+  let result = this.in_obj_with_key(key,val)
+  result.map(obj=>{
+    obj=Object.assign(obj,new_obj)
   })
+  return this
 }
 
 
 Array.prototype.remove_obj_with_key = function (key, val) {
-  return this.filter((obj) => {
-    return obj[key] !== val
+  let result=  this.filter((obj) => {
+    return obj[key] === val
   })
+  return this.remove(result)
 }
 Array.prototype.is_in_obj_with_key = function (key, val) {
   let data = this.filter((obj) => {
